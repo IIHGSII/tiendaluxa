@@ -1,0 +1,112 @@
+.wizardProgress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  max-width: 600px;
+  margin: 0 auto var(--space-12) auto;
+}
+
+.progressStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  position: relative;
+  z-index: 1;
+}
+
+.stepNum {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-cream-dark);
+  color: var(--color-gray);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.stepName {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-gray);
+  transition: all 0.3s ease;
+}
+
+.progressLine {
+  flex-grow: 1;
+  height: 1px;
+  background: var(--color-border);
+  max-width: 80px;
+  margin-top: -18px; /* Offset align with stepNum */
+}
+
+.progressStep.active .stepNum {
+  background: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+.progressStep.active .stepName {
+  color: var(--color-black);
+}
+
+/* ── Empty State ── */
+.emptyCheckout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: var(--space-8);
+}
+
+.emptyContent {
+  text-align: center;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.emptyTitle {
+  font-family: var(--font-title);
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  color: var(--color-black);
+  margin: 0;
+}
+
+.emptyText {
+  font-size: 0.9375rem;
+  color: var(--color-gray);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.continueBtn {
+  margin-top: var(--space-4);
+  display: inline-block;
+  background: var(--color-black);
+  color: var(--color-white);
+  text-decoration: none;
+  padding: var(--space-4) var(--space-8);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: var(--radius-sm);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.continueBtn:hover {
+  background: var(--color-gold);
+  transform: translateY(-2px);
+}

@@ -1,0 +1,173 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* ── Image wrapper ── */
+.imgWrapper {
+  position: relative;
+  aspect-ratio: 3/4;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-cream-dark);
+  display: block;
+  text-decoration: none;
+}
+
+/* Hover zoom */
+.imgWrapper img {
+  transition: transform var(--transition-slow) !important;
+}
+
+.card:hover .imgWrapper img {
+  transform: scale(1.06) !important;
+}
+
+/* ── Badges ── */
+.badges {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.badgeNew,
+.badgeSale,
+.badgeBest {
+  display: inline-block;
+  padding: 3px var(--space-2);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+}
+
+.badgeNew  { background: var(--color-black);  color: var(--color-white); }
+.badgeSale { background: var(--color-error);   color: var(--color-white); }
+.badgeBest { background: var(--color-gold);    color: var(--color-white); }
+
+/* ── Quick Add Overlay ── */
+.quickAdd {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  padding: var(--space-4);
+  transform: translateY(100%);
+  transition: transform var(--transition-base);
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%);
+}
+
+.imgWrapper:hover .quickAdd {
+  transform: translateY(0);
+}
+
+.addBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-white);
+  color: var(--color-black);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.addBtn:hover {
+  background: var(--color-gold);
+  color: var(--color-white);
+}
+
+.addBtnSuccess {
+  background: var(--color-success) !important;
+  color: var(--color-white) !important;
+}
+
+/* ── Info ── */
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.brand {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.name {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--color-black);
+  text-decoration: none;
+  line-height: 1.3;
+  transition: color var(--transition-fast);
+}
+
+.name:hover {
+  color: var(--color-gold-dark);
+}
+
+.sub {
+  font-size: 0.75rem;
+  color: var(--color-gray);
+  margin-bottom: var(--space-1);
+}
+
+/* ── Rating ── */
+.rating {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: 2px;
+}
+
+.stars {
+  font-size: 0.8rem;
+  color: var(--color-gold);
+  letter-spacing: 1px;
+}
+
+.reviewCount {
+  font-size: 0.7rem;
+  color: var(--color-gray);
+}
+
+/* ── Price ── */
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.price {
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--color-black);
+}
+
+.priceOld {
+  font-size: 0.875rem;
+  color: var(--color-gray);
+  text-decoration: line-through;
+}

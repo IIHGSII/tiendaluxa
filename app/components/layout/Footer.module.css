@@ -1,0 +1,196 @@
+.footer {
+  background: var(--color-charcoal);
+  color: var(--color-cream);
+  margin-top: var(--space-24);
+}
+
+/* ── Top Strip ── */
+.topStrip {
+  background: var(--color-gold);
+  padding: var(--space-3) 0;
+}
+
+.freeShip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-white);
+}
+
+/* ── Grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--space-12);
+  padding: var(--space-16) 0 var(--space-12);
+}
+
+/* ── Brand Column ── */
+.footerLogo {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  margin-bottom: var(--space-4);
+}
+
+.logoL {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-gold);
+  line-height: 1;
+}
+
+.logoUXA {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--color-cream);
+  line-height: 1;
+  letter-spacing: 0.08em;
+}
+
+.tagline {
+  font-size: 0.875rem;
+  color: var(--color-gray-light);
+  line-height: 1.7;
+  margin-bottom: var(--space-6);
+}
+
+.socials {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: var(--color-gray-light);
+  transition: all var(--transition-base);
+}
+
+.socialLink:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+  background: rgba(201, 169, 110, 0.1);
+}
+
+/* ── Link Columns ── */
+.linkCol {}
+
+.colTitle {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--space-5);
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  list-style: none;
+}
+
+.footerLink {
+  font-size: 0.875rem;
+  color: var(--color-gray-light);
+  transition: color var(--transition-fast);
+  text-decoration: none;
+}
+
+.footerLink:hover {
+  color: var(--color-cream);
+}
+
+.address {
+  font-size: 0.875rem;
+  color: var(--color-gray-light);
+}
+
+/* ── Payment badges ── */
+.payMethods {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.payBadge {
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-gray-light);
+}
+
+/* ── Bottom Bar ── */
+.bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: var(--space-6) 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.copyright {
+  font-size: 0.8125rem;
+  color: var(--color-gray);
+}
+
+.legal {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-gray);
+  font-size: 0.8125rem;
+}
+
+.legalLink {
+  color: var(--color-gray);
+  transition: color var(--transition-fast);
+  text-decoration: none;
+}
+
+.legalLink:hover {
+  color: var(--color-cream);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    padding: var(--space-10) 0 var(--space-8);
+  }
+
+  .bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-3);
+  }
+}

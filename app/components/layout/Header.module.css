@@ -1,0 +1,198 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--header-height);
+  background: rgba(250, 248, 245, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: all var(--transition-base);
+}
+
+.header.scrolled {
+  background: rgba(250, 248, 245, 0.97);
+  border-bottom-color: var(--color-border);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  gap: var(--space-6);
+}
+
+/* ── Logo ── */
+.logo {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logoL {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-gold);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.logoUXA {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--color-black);
+  line-height: 1;
+  letter-spacing: 0.08em;
+}
+
+/* ── Desktop Nav ── */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.navLink {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-gray-dark);
+  text-decoration: none;
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-gold);
+  transition: width var(--transition-base);
+}
+
+.navLink:hover {
+  color: var(--color-black);
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+/* ── Actions ── */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.iconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  color: var(--color-charcoal);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.iconBtn:hover {
+  color: var(--color-black);
+  background: var(--color-cream-dark);
+}
+
+/* ── Cart Badge ── */
+.badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  background: var(--color-gold);
+  color: var(--color-white);
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  pointer-events: none;
+}
+
+@keyframes badgeBump {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.4); }
+  70%  { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+.badge.bump {
+  animation: badgeBump 0.35s var(--transition-spring);
+}
+
+/* ── Hamburger (mobile only) ── */
+.hamburger {
+  display: none;
+}
+
+/* ── Mobile Menu ── */
+.mobileMenu {
+  display: none;
+  flex-direction: column;
+  background: var(--color-cream);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-4) 0;
+  animation: fadeInUp 0.2s ease;
+}
+
+.mobileLink {
+  display: block;
+  padding: var(--space-3) var(--space-6);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-charcoal);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.mobileLink:hover {
+  color: var(--color-gold);
+  background: var(--color-cream-dark);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .mobileMenu {
+    display: flex;
+  }
+}

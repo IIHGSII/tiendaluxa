@@ -1,0 +1,384 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-6) 0 var(--space-8);
+  font-size: 0.8125rem;
+  color: var(--color-gray);
+}
+
+.breadcrumb a {
+  color: var(--color-gray);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.breadcrumb a:hover {
+  color: var(--color-gold);
+}
+
+/* ── PDP Grid ── */
+.pdpGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  margin-bottom: var(--space-24);
+  align-items: start;
+}
+
+/* ── Gallery ── */
+.gallery {
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-6));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.mainImg {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-cream-dark);
+}
+
+.thumbs {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.thumb {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-cream-dark);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.thumbActive {
+  border-color: var(--color-gold);
+}
+
+/* ── Badges (on image) ── */
+.badges {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.badgeNew, .badgeSale, .badgeBest {
+  display: inline-block;
+  padding: 4px var(--space-3);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border-radius: var(--radius-sm);
+}
+
+.badgeNew  { background: var(--color-black);  color: var(--color-white); }
+.badgeSale { background: var(--color-error);   color: var(--color-white); }
+.badgeBest { background: var(--color-gold);    color: var(--color-white); }
+
+/* ── Details ── */
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.brand {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.stars {
+  color: var(--color-gold);
+  font-size: 0.875rem;
+  letter-spacing: 1px;
+}
+
+.ratingText {
+  font-size: 0.8125rem;
+  color: var(--color-gray);
+}
+
+.productName {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.15;
+}
+
+.productSub {
+  font-size: 0.9375rem;
+  color: var(--color-gray);
+}
+
+/* ── Price ── */
+.priceBlock {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.price {
+  font-family: var(--font-sans);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-black);
+  letter-spacing: -0.02em;
+}
+
+.priceOld {
+  font-size: 1.125rem;
+  color: var(--color-gray);
+  text-decoration: line-through;
+}
+
+.discount {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-error);
+  background: #FEE2E2;
+  padding: 3px var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+/* ── Shipping note ── */
+.shippingNote {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-success);
+  padding: var(--space-3) var(--space-4);
+  background: #F0FAF4;
+  border-radius: var(--radius-sm);
+  border: 1px solid #B8EACE;
+}
+
+/* ── Description ── */
+.description {}
+
+.descTitle {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-charcoal-mid);
+  margin-bottom: var(--space-3);
+}
+
+.description p {
+  font-size: 0.9375rem;
+  color: var(--color-gray-dark);
+  line-height: 1.75;
+}
+
+/* ── Actions ── */
+.actions {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-4);
+}
+
+.qtyWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.qtyLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gray);
+}
+
+.qtyControls {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  height: 48px;
+}
+
+.qtyBtn {
+  width: 44px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  font-size: 1.25rem;
+  color: var(--color-charcoal);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.qtyBtn:hover {
+  background: var(--color-cream-dark);
+}
+
+.qtyInput {
+  width: 44px;
+  height: 100%;
+  text-align: center;
+  border: none;
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-black);
+  background: transparent;
+  outline: none;
+  -moz-appearance: textfield;
+}
+
+.qtyInput::-webkit-inner-spin-button,
+.qtyInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.addBtn {
+  flex: 1;
+  height: 48px;
+  font-size: 0.875rem;
+  gap: var(--space-2);
+  transition: all var(--transition-fast);
+}
+
+.addBtnSuccess {
+  background: var(--color-success) !important;
+  border-color: var(--color-success) !important;
+}
+
+/* ── WhatsApp button ── */
+.whatsappBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-4) var(--space-6);
+  background: #25D366;
+  color: var(--color-white);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  border: none;
+}
+
+.whatsappBtn:hover {
+  background: #1EBE59;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+}
+
+/* ── Features list ── */
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) 0 0;
+}
+
+.features li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.8125rem;
+  color: var(--color-gray-dark);
+}
+
+.features li svg {
+  color: var(--color-success);
+  flex-shrink: 0;
+}
+
+/* ── Related products ── */
+.related {
+  padding-top: var(--space-16);
+  border-top: 1px solid var(--color-border);
+  margin-bottom: var(--space-24);
+}
+
+.relatedTitle {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  margin-bottom: var(--space-8);
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .pdpGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .gallery {
+    position: static;
+  }
+
+  .relatedGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .actions {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .qtyControls, .addBtn {
+    width: 100%;
+  }
+
+  .relatedGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+}
