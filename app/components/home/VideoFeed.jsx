@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { videoFeedItems } from '../../data/products';
+import { videoFeedItems } from '../../data/constants';
 import { useCart } from '../../context/CartContext';
 import { formatPYG } from '../../lib/utils';
 import styles from './VideoFeed.module.css';
