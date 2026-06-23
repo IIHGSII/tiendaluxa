@@ -97,7 +97,7 @@ export default function CartDrawer() {
                 {/* Product Image */}
                 <Link href={`/producto/${item.slug}`} onClick={closeCart} className={styles.itemImg}>
                   <Image
-                    src={item.imageFallback || item.image}
+                    src={item.image || item.imageFallback || 'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=600&q=90'}
                     alt={item.name}
                     width={80}
                     height={80}
@@ -108,11 +108,11 @@ export default function CartDrawer() {
 
                 {/* Item Info */}
                 <div className={styles.itemInfo}>
-                  <span className={styles.itemBrand}>{item.brand}</span>
+                  <span className={styles.itemBrand}>{item.brand || 'Luxa'}</span>
                   <Link href={`/producto/${item.slug}`} onClick={closeCart} className={styles.itemName}>
                     {item.name}
                   </Link>
-                  <span className={styles.itemMl}>{item.ml} · {item.subcategory}</span>
+                  <span className={styles.itemMl}>{[item.ml, item.subcategory].filter(Boolean).join(' · ') || 'Fragancia'}</span>
 
                   <div className={styles.itemFooter}>
                     {/* Qty controls */}

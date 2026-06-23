@@ -39,7 +39,7 @@ export default function StepCart({ onNext }) {
               <div className={styles.itemLeft}>
                 <div className={styles.itemImg}>
                   <Image
-                    src={item.imageFallback || item.image}
+                    src={item.image || item.imageFallback || 'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=600&q=90'}
                     alt={item.name}
                     fill
                     style={{ objectFit: 'cover' }}
@@ -47,9 +47,9 @@ export default function StepCart({ onNext }) {
                   />
                 </div>
                 <div className={styles.itemInfo}>
-                  <span className={styles.itemBrand}>{item.brand}</span>
+                  <span className={styles.itemBrand}>{item.brand || 'Luxa'}</span>
                   <span className={styles.itemName}>{item.name}</span>
-                  <span className={styles.itemMeta}>{item.ml} · {item.subcategory}</span>
+                  <span className={styles.itemMeta}>{[item.ml, item.subcategory].filter(Boolean).join(' · ') || 'Fragancia'}</span>
                   <span className={styles.itemUnitPrice}>{formatPYG(item.price)} c/u</span>
                 </div>
               </div>
