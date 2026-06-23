@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { useCart } from '../../../context/CartContext';
-import { formatPYG } from '../../../lib/utils';
-import { buildWhatsAppURL } from '../../../lib/whatsapp';
+import { useCart } from '../../context/CartContext';
+import { formatPYG } from '../../lib/utils';
+import { buildWhatsAppURL } from '../../lib/whatsapp';
 import styles from './StepPayment.module.css';
 
 export default function StepPayment({ formData, onBack }) {

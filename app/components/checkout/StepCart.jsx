@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useCart } from '../../../context/CartContext';
-import { formatPYG } from '../../../lib/utils';
+import { useCart } from '../../context/CartContext';
+import { formatPYG } from '../../lib/utils';
 import styles from './StepCart.module.css';
 
 export default function StepCart({ onNext }) {
