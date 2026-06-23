@@ -3,18 +3,18 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { videoFeedItems, products } from '../../data/products';
+import { videoFeedItems } from '../../data/products';
 import { useCart } from '../../context/CartContext';
 import { formatPYG } from '../../lib/utils';
 import styles from './VideoFeed.module.css';
 
-export default function VideoFeed() {
+export default function VideoFeed({ feedProducts = [] }) {
   const { addItem } = useCart();
   const [adding, setAdding] = useState(null);
 
   const handleAdd = (productId, e) => {
     e.preventDefault();
-    const product = products.find(p => p.id === productId);
+    const product = feedProducts.find(p => p.id === productId);
     if (!product) return;
     setAdding(productId);
     addItem(product);
@@ -35,7 +35,7 @@ export default function VideoFeed() {
 
         <div className={styles.feed}>
           {videoFeedItems.map((item, i) => {
-            const product = products.find(p => p.id === item.productId);
+            const product = feedProducts.find(p => p.id === item.productId);
             if (!product) return null;
 
             return (

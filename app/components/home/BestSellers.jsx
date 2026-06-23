@@ -1,8 +1,9 @@
-import { bestSellers } from '../../data/products';
+import { getBestSellers } from '../../data/products';
 import ProductCard from '../product/ProductCard';
 import styles from './BestSellers.module.css';
 
-export default function BestSellers() {
+export default async function BestSellers() {
+  const bestSellers = await getBestSellers();
   return (
     <section className={styles.section} aria-labelledby="bs-title">
       <div className="container">
