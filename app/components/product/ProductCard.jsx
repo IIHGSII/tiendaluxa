@@ -24,12 +24,23 @@ export default function ProductCard({ product }) {
     setTimeout(() => setAdding(false), 700);
   };
 
+  const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=600&q=90';
+  const displayImage = imgErr 
+    ? (product.imageFallback || DEFAULT_IMAGE) 
+    : (product.image || product.imageFallback || DEFAULT_IMAGE);
+
+  const displayBrand = product.brand || 'Luxa';
+  const specText = [product.ml, product.subcategory].filter(Boolean).join(' · ') || 'Fragancia';
+
+  const rating = Number(product.rating);
+  const showRating = !isNaN(rating) && rating > 0;
+
   return (
     <article className={styles.card} id={`product-${product.id}`}>
       <Link href={`/producto/${product.slug}`} className={styles.imgWrapper}>
         <Image
-          src={imgErr ? product.imageFallback : (product.image || product.imageFallback)}
-          alt={`${product.name} — ${product.brand}`}
+          src={displayImage}
+          alt={`${product.name} — ${displayBrand}`}
           fill
           style={{ objectFit: 'cover' }}
           onError={() => setImgErr(true)}
@@ -70,19 +81,19 @@ export default function ProductCard({ product }) {
 
       {/* Info */}
       <div className={styles.info}>
-        <span className={styles.brand}>{product.brand}</span>
+        <span className={styles.brand}>{displayBrand}</span>
         <Link href={`/producto/${product.slug}`} className={styles.name}>
           {product.name}
         </Link>
-        <span className={styles.sub}>{product.ml} · {product.subcategory}</span>
+        <span className={styles.sub}>{specText}</span>
 
         {/* Rating */}
-        {product.rating && (
+        {showRating && (
           <div className={styles.rating}>
             <span className={styles.stars}>
-              {'★'.repeat(Math.round(product.rating))}{'☆'.repeat(5 - Math.round(product.rating))}
+              {'★'.repeat(Math.round(rating))}{'☆'.repeat(5 - Math.round(rating))}
             </span>
-            <span className={styles.reviewCount}>({product.reviews})</span>
+            <span className={styles.reviewCount}>({product.reviews || 0})</span>
           </div>
         )}
 

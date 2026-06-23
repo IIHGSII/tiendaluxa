@@ -30,7 +30,18 @@ export default function ProductDetail({ product, relatedProducts }) {
     setTimeout(() => setAdding(false), 800);
   };
 
-  const imgSrc = imgErr ? product.imageFallback : (product.image || product.imageFallback);
+  const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=600&q=90';
+  const imgSrc = imgErr 
+    ? (product.imageFallback || DEFAULT_IMAGE) 
+    : (product.image || product.imageFallback || DEFAULT_IMAGE);
+
+  const displayBrand = product.brand || 'Luxa';
+  const specText = [product.ml, product.subcategory].filter(Boolean).join(' · ') || 'Fragancia';
+  const categoryLink = product.category || 'all';
+  const categoryLabel = product.category || 'Productos';
+
+  const rating = Number(product.rating);
+  const showRating = !isNaN(rating) && rating > 0;
 
   return (
     <>
@@ -47,7 +58,7 @@ export default function ProductDetail({ product, relatedProducts }) {
         <nav className={styles.breadcrumb} aria-label="Breadcrumb">
           <Link href="/">Inicio</Link>
           <span>›</span>
-          <Link href={`/categoria/${product.category}`} style={{ textTransform: 'capitalize' }}>{product.category}</Link>
+          <Link href={`/categoria/${categoryLink}`} style={{ textTransform: 'capitalize' }}>{categoryLabel}</Link>
           <span>›</span>
           <span>{product.name}</span>
         </nav>
@@ -59,7 +70,7 @@ export default function ProductDetail({ product, relatedProducts }) {
             <div className={styles.mainImg}>
               <Image
                 src={imgSrc}
-                alt={`${product.name} — ${product.brand}`}
+                alt={`${product.name} — ${displayBrand}`}
                 fill
                 priority
                 style={{ objectFit: 'contain' }}
@@ -97,21 +108,21 @@ export default function ProductDetail({ product, relatedProducts }) {
           <div className={styles.details}>
             {/* Brand & rating */}
             <div className={styles.topRow}>
-              <span className={styles.brand}>{product.brand}</span>
-              {product.rating && (
+              <span className={styles.brand}>{displayBrand}</span>
+              {showRating && (
                 <div className={styles.rating}>
                   <span className={styles.stars}>
-                    {'★'.repeat(Math.floor(product.rating))}
+                    {'★'.repeat(Math.floor(rating))}
                   </span>
                   <span className={styles.ratingText}>
-                    {product.rating} ({product.reviews} reseñas)
+                    {rating} ({product.reviews || 0} reseñas)
                   </span>
                 </div>
               )}
             </div>
 
             <h1 className={styles.productName}>{product.name}</h1>
-            <p className={styles.productSub}>{product.ml} · {product.subcategory}</p>
+            <p className={styles.productSub}>{specText}</p>
 
             {/* Price */}
             <div className={styles.priceBlock}>
