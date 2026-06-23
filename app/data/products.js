@@ -31,10 +31,13 @@ export async function getProductBySlug(slug) {
 }
 
 export async function getProductsByCategory(category) {
-  const { data, error } = await supabase
-    .from('products')
-    .select('*')
-    .eq('category', category);
+  let query = supabase.from('products').select('*');
+  
+  if (category && category !== 'all') {
+    query = query.eq('category', category);
+  }
+  
+  const { data, error } = await query.order('id', { ascending: false });
     
   if (error) {
     console.error(`Error fetching products by category ${category}:`, error);
