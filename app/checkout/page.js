@@ -8,15 +8,21 @@ import StepShipping from '../components/checkout/StepShipping';
 import StepPayment from '../components/checkout/StepPayment';
 import styles from './checkout.module.css';
 
+const initialShippingData = {
+  fullName:    '',
+  email:       '',
+  phone:       '',
+  address:     '',
+  city:        '',
+  notes:       '',
+};
+
 export default function CheckoutPage() {
   const { items } = useCart();
   const [step, setStep] = useState(1); // 1: Cart, 2: Shipping, 3: Payment
-  const [shippingData, setShippingData] = useState(null);
+  const [shippingData, setShippingData] = useState(initialShippingData);
 
-  const handleNextStep = (data) => {
-    if (step === 2) {
-      setShippingData(data);
-    }
+  const handleNextStep = () => {
     setStep(prev => prev + 1);
   };
 
@@ -67,7 +73,8 @@ export default function CheckoutPage() {
         )}
         {step === 2 && (
           <StepShipping
-            initialData={shippingData}
+            formData={shippingData}
+            setFormData={setShippingData}
             onNext={handleNextStep}
             onBack={handleBackStep}
           />
