@@ -384,7 +384,7 @@ function ExcelImporter({ onImportComplete }) {
 export default function AdminPanel({ products: initialProducts }) {
   const [products, setProducts] = useState(initialProducts);
   const [editingId, setEditingId] = useState(null);
-  const [showImporter, setShowImporter] = useState(false);
+  const [showImporter, setShowImporter] = useState(true);
   const [formData, setFormData] = useState({
     name: '',
     price: '',
@@ -428,67 +428,72 @@ export default function AdminPanel({ products: initialProducts }) {
     <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '2rem' }}>
       <h1 style={{ marginBottom: '2rem', fontSize: '2rem' }}>Gestión de Productos</h1>
 
-      {/* ── Importador Excel ─────────────────────────────────── */}
-      <div style={{
-        background: '#111',
-        borderRadius: '12px',
-        marginBottom: '2.5rem',
-        border: '1px solid #2a2a2a',
-        overflow: 'hidden',
-      }}>
-        {/* Cabecera del importador */}
+      {/* ── Tabs de navegación ─────────────────────────────────── */}
+      <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '2rem', borderBottom: '1px solid #222', paddingBottom: '0' }}>
         <button
-          onClick={() => setShowImporter(v => !v)}
+          onClick={() => setShowImporter(true)}
           style={{
-            width: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            padding: '1.25rem 1.75rem',
+            padding: '0.75rem 1.5rem',
             background: 'transparent',
             border: 'none',
-            color: 'white',
+            color: showImporter ? '#d4af37' : '#666',
+            fontWeight: showImporter ? 700 : 400,
+            fontSize: '0.9rem',
             cursor: 'pointer',
-            borderBottom: showImporter ? '1px solid #2a2a2a' : 'none',
+            borderBottom: showImporter ? '2px solid #d4af37' : '2px solid transparent',
+            marginBottom: '-1px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            transition: 'all 0.2s',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <span style={{ fontSize: '1.2rem' }}>📥</span>
-            <span style={{ fontWeight: 600, fontSize: '1rem' }}>Importar desde Excel</span>
-            <span style={{
-              background: '#d4af3722',
-              color: '#d4af37',
-              border: '1px solid #d4af3744',
-              borderRadius: '4px',
-              padding: '2px 8px',
-              fontSize: '0.7rem',
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '0.05em',
-            }}>
-              Carga masiva
-            </span>
-          </div>
-          <span style={{ color: '#555', fontSize: '1.2rem', transition: 'transform 0.2s', transform: showImporter ? 'rotate(180deg)' : 'none' }}>
-            ▾
-          </span>
+          📥 Importar desde Excel
         </button>
-
-        {showImporter && (
-          <div style={{ padding: '1.75rem' }}>
-            <p style={{ color: '#666', fontSize: '0.85rem', marginBottom: '1.5rem', lineHeight: 1.6 }}>
-              Subí el archivo Excel de tu proveedor. Se detectarán automáticamente las columnas{' '}
-              <strong style={{ color: '#aaa' }}>Codigo</strong>,{' '}
-              <strong style={{ color: '#aaa' }}>Producto</strong> y{' '}
-              <strong style={{ color: '#aaa' }}>Precio</strong>. Los productos existentes (por código)
-              se actualizarán; los nuevos serán creados.
-            </p>
-            <ExcelImporter onImportComplete={() => {}} />
-          </div>
-        )}
+        <button
+          onClick={() => setShowImporter(false)}
+          style={{
+            padding: '0.75rem 1.5rem',
+            background: 'transparent',
+            border: 'none',
+            color: !showImporter ? '#d4af37' : '#666',
+            fontWeight: !showImporter ? 700 : 400,
+            fontSize: '0.9rem',
+            cursor: 'pointer',
+            borderBottom: !showImporter ? '2px solid #d4af37' : '2px solid transparent',
+            marginBottom: '-1px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            transition: 'all 0.2s',
+          }}
+        >
+          ✏️ Crear / Editar Producto
+        </button>
       </div>
 
+      {/* ── Importador Excel ─────────────────────────────────── */}
+      {showImporter && (
+        <div style={{
+          background: '#111',
+          borderRadius: '12px',
+          marginBottom: '2.5rem',
+          border: '1px solid #2a2a2a',
+          padding: '1.75rem',
+        }}>
+          <p style={{ color: '#666', fontSize: '0.85rem', marginBottom: '1.5rem', lineHeight: 1.6 }}>
+            Subí el archivo Excel de tu proveedor. Se detectarán automáticamente las columnas{' '}
+            <strong style={{ color: '#aaa' }}>Codigo</strong>,{' '}
+            <strong style={{ color: '#aaa' }}>Producto</strong> y{' '}
+            <strong style={{ color: '#aaa' }}>Precio</strong>. Los productos existentes (por código)
+            se actualizarán; los nuevos serán creados.
+          </p>
+          <ExcelImporter onImportComplete={() => {}} />
+        </div>
+      )}
+
       {/* ── Formulario Crear / Editar ──────────────────────── */}
+      {!showImporter && (
       <form
         onSubmit={handleSubmit}
         style={{
@@ -576,8 +581,9 @@ export default function AdminPanel({ products: initialProducts }) {
           )}
         </div>
       </form>
+      )}
 
-      {/* ── Tabla de Productos ─────────────────────────────── */}
+      {/* ── Tabla de Productos (siempre visible) ──────────────── */}
       <div style={{ overflowX: 'auto', background: '#111', borderRadius: '12px', padding: '1rem' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
           <thead>
