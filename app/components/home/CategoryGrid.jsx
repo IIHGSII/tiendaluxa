@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './CategoryGrid.module.css';
@@ -42,6 +45,12 @@ const categories = [
 ];
 
 export default function CategoryGrid() {
+  const [failedImages, setFailedImages] = useState({});
+
+  const handleImageError = (id) => {
+    setFailedImages((prev) => ({ ...prev, [id]: true }));
+  };
+
   return (
     <section id="coleccion" className={styles.section} aria-labelledby="cat-title">
       <div className="container">
@@ -63,11 +72,11 @@ export default function CategoryGrid() {
               {/* Image */}
               <div className={styles.imgWrapper}>
                 <Image
-                  src={cat.image}
+                  src={failedImages[cat.id] ? cat.fallback : cat.image}
                   alt={`Perfumes ${cat.label} — Tienda Luxa`}
                   fill
                   style={{ objectFit: 'cover' }}
-                  onError={e => { e.target.src = cat.fallback; }}
+                  onError={() => handleImageError(cat.id)}
                   unoptimized
                 />
               </div>
