@@ -12,7 +12,7 @@ export async function login(prevState, formData) {
   if (password === SESSION_SECRET) {
     cookies().set(SESSION_COOKIE_NAME, 'authenticated', {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: false, // Permitir login en HTTP en Hostinger temporalmente
       sameSite: 'lax',
       path: '/',
       maxAge: 60 * 60 * 24 * 7 // 1 week
